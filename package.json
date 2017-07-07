@@ -1,0 +1,37 @@
+{
+  "name": "resize-sensor--preact",
+  "version": "1.0.0",
+  "description": "Resize Sensor for Preact",
+  "main": "./build/resize-sensor.js",
+  "scripts": {
+    "install-global-deps": "npm install -g single-page-server && npm install -g webpack",
+    "demo-server": "single-page-server -p=8080 -b=demo -f=demo/index.html",
+    "demo-webpack": "webpack",
+    "build-release": "./node_modules/.bin/babel.cmd ./src --out-dir ./build --source-maps",
+    "build": "./node_modules/.bin/babel.cmd ./src --watch --out-dir ./build --source-maps"
+  },
+  "keywords": [
+    "resize",
+    "sensor",
+    "preact"
+  ],
+  "author": "Kirill Shestakov",
+  "license": "MIT",
+  "devDependencies": {
+    "babel-cli": "^6.24.1",
+    "babel-core": "^6.25.0",
+    "babel-loader": "^7.0.0",
+    "babel-plugin-transform-css-import-to-string": "0.0.2",
+    "babel-preset-es2015": "^6.24.1",
+    "babel-plugin-transform-react-jsx": "^6.24.1",
+    "css-loader": "^0.28.4",
+    "path": "^0.12.7",
+    "raw-loader": "^0.5.1",
+    "source-map-loader": "^0.2.1",
+    "style-loader": "^0.18.2",
+    "webpack": "^2.6.1"
+  },
+  "dependencies": {
+    "preact":"^8.1.0"
+  }
+}

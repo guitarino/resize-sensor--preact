@@ -1,0 +1,69 @@
+.resize-sensor-preact,
+.resize-sensor-preact > div,
+.resize-sensor-preact .resize-sensor-preact__contract-child {
+  display: block;
+  position: absolute;
+  top: 0px;
+  left: 0px;
+  height: 100%;
+  width: 100%;
+  opacity: 0;
+  overflow: hidden;
+  pointer-events: none;
+  z-index: -1;
+}
+.resize-sensor-preact {
+  background: #eee;
+  overflow: auto;
+  direction: ltr; /* otherwise not working when direction: rtl - bug in chrome */
+}
+.resize-sensor-preact .resize-sensor-preact__contract-child {
+  width: 200%;
+  height: 200%;
+}
+@keyframes resize-sensor-preact-animation {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 0;
+  }
+}
+@-webkit-keyframes resize-sensor-preact-animation {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 0;
+  }
+}
+@-moz-keyframes resize-sensor-preact-animation {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 0;
+  }
+}
+@-o-keyframes resize-sensor-preact-animation {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 0;
+  }
+}
+/* This is needed to trigger resizing
+   once the element becomes visible */
+.resize-sensor-preact {
+  -webkit-animation-name: resize-sensor-preact-animation;
+  -moz-animation-name: resize-sensor-preact-animation;
+  -o-animation-name: resize-sensor-preact-animation;
+  -ms-animation-name: resize-sensor-preact-animation;
+  animation-name: resize-sensor-preact-animation;
+  -webkit-animation-duration: 1ms;
+  -moz-animation-duration: 1ms;
+  -o-animation-duration: 1ms;
+  -ms-animation-duration: 1ms;
+  animation-duration: 1ms;
+}
