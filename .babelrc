@@ -1,4 +1,4 @@
 {
   "presets": ["es2015"],
-  "plugins": ["transform-css-import-to-string", ["transform-react-jsx", { "pragma":"preact.h" }]]
+  "plugins": [["transform-react-jsx", { "pragma":"preact.h" }]]
 }

@@ -31,4 +31,4 @@
         clearTimeout(id);
     }
   ;
-}(window || global));
+}((this && this.window) || global));

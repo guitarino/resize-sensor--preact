@@ -29,41 +29,9 @@
     opacity: 0;
   }
 }
-@-webkit-keyframes resize-sensor-preact-animation {
-  from {
-    opacity: 0;
-  }
-  to {
-    opacity: 0;
-  }
-}
-@-moz-keyframes resize-sensor-preact-animation {
-  from {
-    opacity: 0;
-  }
-  to {
-    opacity: 0;
-  }
-}
-@-o-keyframes resize-sensor-preact-animation {
-  from {
-    opacity: 0;
-  }
-  to {
-    opacity: 0;
-  }
-}
 /* This is needed to trigger resizing
    once the element becomes visible */
 .resize-sensor-preact {
-  -webkit-animation-name: resize-sensor-preact-animation;
-  -moz-animation-name: resize-sensor-preact-animation;
-  -o-animation-name: resize-sensor-preact-animation;
-  -ms-animation-name: resize-sensor-preact-animation;
   animation-name: resize-sensor-preact-animation;
-  -webkit-animation-duration: 1ms;
-  -moz-animation-duration: 1ms;
-  -o-animation-duration: 1ms;
-  -ms-animation-duration: 1ms;
   animation-duration: 1ms;
 }

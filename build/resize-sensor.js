@@ -12,6 +12,8 @@ var _preact2 = _interopRequireDefault(_preact);
 
 require('./raf');
 
+require('./resize-sensor.css');
+
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
 function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
@@ -26,29 +28,18 @@ function _inherits(subClass, superClass) { if (typeof superClass !== "function" 
                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                 * Rework of https://github.com/procurios/ResizeSensor
                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                 */
 
-var style = '.resize-sensor-preact,.resize-sensor-preact > div,.resize-sensor-preact .resize-sensor-preact__contract-child{display:block;position:absolute;top:0px;left:0px;height:100%;width:100%;opacity:0;overflow:hidden;pointer-events:none;z-index:-1;}.resize-sensor-preact{background:#eee;overflow:auto;direction:ltr;}.resize-sensor-preact .resize-sensor-preact__contract-child{width:200%;height:200%;}@keyframes resize-sensor-preact-animation{from{opacity:0;}to{opacity:0;}}@-webkit-keyframes resize-sensor-preact-animation{from{opacity:0;}to{opacity:0;}}@-moz-keyframes resize-sensor-preact-animation{from{opacity:0;}to{opacity:0;}}@-o-keyframes resize-sensor-preact-animation{from{opacity:0;}to{opacity:0;}}.resize-sensor-preact{-webkit-animation-name:resize-sensor-preact-animation;-moz-animation-name:resize-sensor-preact-animation;-o-animation-name:resize-sensor-preact-animation;-ms-animation-name:resize-sensor-preact-animation;animation-name:resize-sensor-preact-animation;-webkit-animation-duration:1ms;-moz-animation-duration:1ms;-o-animation-duration:1ms;-ms-animation-duration:1ms;animation-duration:1ms;}';
-
-
 var
 // this is for ie9
-supportsAttachEvent = 'attachEvent' in document,
-
-// needed so that we just insert <style> once
-styleInitialized = false,
+supportsAttachEvent,
 
 // animation start events with varied prefixes
-animStart = ['webkitAnimationStart', 'animationstart', 'oAnimationStart', 'MSAnimationStart'],
+animStart = ['webkitAnimationStart', 'animationstart', 'oAnimationStart', 'MSAnimationStart'];
 
-// the easiest way is to just insert a style
-// into <style> tag so that all resize sensors
-// share the same style
-insertCSS = function insertCSS(css) {
-  var where = document.head || document.body || document.documentElement;
-  var style = document.createElement('style');
-  style.type = 'text/css';
-  style.textContent = css;
-  where.appendChild(style);
-};
+try {
+  supportsAttachEvent = 'attachEvent' in document;
+} catch (probablyDoingSSR) {
+  supportsAttachEvent = false;
+}
 
 // essentially, this is the idea:
 //
@@ -117,18 +108,6 @@ var ResizeSensor = function (_preact$Component) {
           _preact2.default.h('div', { 'class': 'resize-sensor-preact__contract-child' })
         )
       );
-    }
-
-    // initially, when no element is mounted yet,
-    // insert style into DOM
-
-  }, {
-    key: 'componentWillMount',
-    value: function componentWillMount() {
-      if (!styleInitialized) {
-        styleInitialized = true;
-        insertCSS(style);
-      }
     }
 
     // never update element, just render once

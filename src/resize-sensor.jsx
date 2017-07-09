@@ -7,36 +7,28 @@
  */
 
 import preact from 'preact';
-import style from './resize-sensor.css';
 import './raf';
+
+import './resize-sensor.css';
 
 var
   // this is for ie9
-  supportsAttachEvent = ('attachEvent' in document),
-  // needed so that we just insert <style> once
-  styleInitialized = false,
+  supportsAttachEvent,
   // animation start events with varied prefixes
   animStart = [
     'webkitAnimationStart',
     'animationstart',
     'oAnimationStart',
     'MSAnimationStart'
-  ],
-  // the easiest way is to just insert a style
-  // into <style> tag so that all resize sensors
-  // share the same style
-  insertCSS = function(css) {
-    var where = (
-      document.head ||
-      document.body ||
-      document.documentElement
-    );
-    var style = document.createElement('style');
-    style.type = 'text/css';
-    style.textContent = css;
-    where.appendChild(style);
-  }
+  ]
 ;
+
+try {
+  supportsAttachEvent = ('attachEvent' in document);
+}
+catch(probablyDoingSSR) {
+  supportsAttachEvent = false;
+}
 
 // essentially, this is the idea:
 //
@@ -80,15 +72,6 @@ export default class ResizeSensor extends preact.Component {
         </div>
       </div>
     );
-  }
-
-  // initially, when no element is mounted yet,
-  // insert style into DOM
-  componentWillMount() {
-    if (!styleInitialized) {
-      styleInitialized = true;
-      insertCSS(style);
-    }
   }
 
   // never update element, just render once

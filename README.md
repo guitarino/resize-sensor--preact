@@ -35,7 +35,9 @@ class App extends preact.Component {
 
 `<ResizeSensor />` will create hidden elements that will fill up all available container's width and height, and, will listen to the width / height changes of the container. Once the change is detected, `onResize` prop will get triggered.
 
-Note: the container should either have `position: relative` or `position: absolute` defined on it.
+**Note 1**: the container should either have `position: relative` or `position: absolute` defined on it.
+
+**Note 2**: in the `ResizeSensor` code, we directly require a CSS stylesheet file from JS. So, make sure that your bundler is configured to use *style-loader* or something similar that allows requiring CSS assets. For example, for webpack, you can use [this style-loader](https://github.com/webpack-contrib/style-loader).
 
 ## See Demo
 
@@ -44,7 +46,6 @@ To see a little demo, do the following
 ```
 git clone https://github.com/guitarino/resize-sensor--preact.git .
 npm install
-npm run install-global-deps
 npm run demo-webpack
 ```
 
@@ -55,6 +56,14 @@ npm run demo-server
 ```
 
 This will tell you the URL address where you'll see a little demo. By changing the browser window size, you can confirm that size change gets reported. By clicking the `Toggle another example` button, you can also confirm that element size gets updated even if the size changed while the element was not visible. You can also play around with the code under `demo/src` and it should automatically re-bundle.
+
+You can also verify that server-side rendering will work by running
+
+```
+npm run try-ssr
+```
+
+Note, when running SSR, requiring CSS stylesheets from your JS will cause errors, but that can be solved by excluding those assets via this [babel plugin](https://www.npmjs.com/package/babel-plugin-transform-require-ignore).
 
 ## Support
 

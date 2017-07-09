@@ -30,5 +30,5 @@
   if (!g.cancelAnimationFrame) g.cancelAnimationFrame = function (id) {
     clearTimeout(id);
   };
-})(window || global);
+})(undefined && undefined.window || global);
 //# sourceMappingURL=raf.js.map
