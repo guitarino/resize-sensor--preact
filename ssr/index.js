@@ -8,7 +8,6 @@ require('babel-register')({
   extensions: [".jsx", ".js"],
   presets: ['es2015'],
   plugins: [
-    ["babel-plugin-transform-require-ignore", { "extensions": [".css", ".less", ".sass"] }],
     ["transform-react-jsx", { "pragma":"preact.h" }]
   ]
 });
