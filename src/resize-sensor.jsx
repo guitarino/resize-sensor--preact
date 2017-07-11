@@ -9,8 +9,6 @@
 import preact from 'preact';
 import './raf';
 
-import './resize-sensor.css';
-
 var
   // this is for ie9
   supportsAttachEvent,

@@ -1,6 +1,6 @@
 {
   "name": "resize-sensor--preact",
-  "version": "1.0.1",
+  "version": "1.0.2",
   "description": "Resize Sensor for Preact",
   "main": "./build/resize-sensor.js",
   "scripts": {

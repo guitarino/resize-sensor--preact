@@ -14,6 +14,8 @@ npm install --save resize-sensor--preact
 import preact from 'preact';
 import ResizeSensor from 'resize-sensor--preact';
 
+import 'resize-sensor--preact/build/resize-sensor.css';
+
 class App extends preact.Component {
   constructor() {
     super();
@@ -37,7 +39,7 @@ class App extends preact.Component {
 
 **Note 1**: the container should either have `position: relative` or `position: absolute` defined on it.
 
-**Note 2**: in the `ResizeSensor` code, we directly require a CSS stylesheet file from JS. So, make sure that your bundler is configured to use *style-loader* or something similar that allows requiring CSS assets. For example, for webpack, you can use [this style-loader](https://github.com/webpack-contrib/style-loader).
+**Note 2**: you will need to include the styles located at `resize-sensor--preact/build/resize-sensor.css`. With webpack, you can use [style-loader](https://github.com/webpack-contrib/style-loader) that allows requiring CSS assets in JS as shown above. Or, you can reference it from your sass file as `@import '~resize-sensor--preact/build/resize-sensor.css'`.
 
 ## See Demo
 

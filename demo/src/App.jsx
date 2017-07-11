@@ -1,6 +1,7 @@
 import preact from 'preact';
 import ResizeSensor from '../../build/resize-sensor';
 
+import '../../build/resize-sensor.css';
 import './App.css';
 
 export default class App extends preact.Component {
